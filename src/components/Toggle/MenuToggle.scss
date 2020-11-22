@@ -1,0 +1,57 @@
+@import '../../scss/mixins.scss';
+@import '../../scss/variables.scss';
+
+.MenuToggle, .active {
+    @include blockCenter($alignVertical: flex-start);
+    flex-direction: column;
+    border: 2px solid $menuToggleColor;
+    border-radius: 15%;
+    opacity: 0.5;
+    cursor: pointer;
+    transition: all 0.3s;
+    
+    div {
+        height: 10%;
+        margin: 5%;
+        background: $menuToggleColor;
+        border-radius: 5px;
+        transition: all 0.3s;
+    }
+
+    div:nth-child(1) { width: 40%; }
+    div:nth-child(2) { width: 90%; }
+    div:nth-child(3) { width: 70%; }
+    div:nth-child(4) { width: 30%; }
+
+    &:hover, div {
+        opacity: 1;
+        transition: all 0.3s;
+    }
+}
+
+.MenuToggle {
+    &:hover div:nth-child(1){ width: 90%; }
+    &:hover div:nth-child(2){ width: 50%; }
+    &:hover div:nth-child(3){ width: 40%; }
+    &:hover div:nth-child(4){ width: 90%; }
+}
+
+.active {
+    transition: all 0.3s;
+    div:nth-child(1) {
+        position: relative;
+        left: 16%;
+        width: 86%;
+        transform: rotate(45deg);
+        transform-origin: left;
+    }
+    div:nth-child(2){ width: 0; }
+    div:nth-child(3){ width: 0; }
+    div:nth-child(4) {
+        position: relative;
+        left: 16%;
+        width: 86%;
+        transform: rotate(-45deg);
+        transform-origin: left;
+    }
+} 

@@ -1,0 +1,7 @@
+@mixin blockCenter($alignHorizontal: center, $alignVertical: center, $height: 100%, $width: 100%) {
+    display: flex;
+    justify-content: $alignHorizontal;
+    align-items: $alignVertical;
+    width: $width;
+    height: $height;
+}
