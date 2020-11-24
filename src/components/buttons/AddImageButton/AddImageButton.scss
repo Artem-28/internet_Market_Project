@@ -1,0 +1,10 @@
+@import '../../../scss/mixins.scss';
+
+.AddImageButton {
+    @include blockCenter($height: 200px, $width: 200px);
+    flex-direction: column;
+    border: 2px solid #086710;
+    border-radius: 25px;
+    cursor: pointer;
+    span { margin-top: 20px; }
+}

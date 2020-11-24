@@ -1,15 +1,40 @@
-import React from 'react'
-import  Header from '../../components/Header/Header'
+import React, { Fragment, useState } from 'react'
+import Blackout from '../../components/Blackout/Blackout'
+import CategoriesList from '../../components/CategoriesList/CategoriesList'
+import ProductImagesSetings from '../../components/ProductImagesSetings/ProductImagesSetings'
+import MenuToggle from '../../components/Toggle/MenuToggle'
+import './Layuot.scss'
 
-const Layuot = props => {
+export default function Layuot(props){
+    const [isOpenMenu, setisOpenMenu] = useState(false)
     return (
-        <div className='Layuot'>
-            <Header />
-            <main>
-                {props.children}
-            </main>
-        </div>
+        <Fragment>
+             <Blackout>
+                 <ProductImagesSetings />
+             </Blackout>
+            <div className='Layuot'>
+                <header>
+                    <div className = 'conteiner'>
+                        <div className = 'label'>
+                            <h1>Internet Market</h1>
+                        </div>
+                        <div className = 'menuToggle'>
+                            <MenuToggle
+                                isOpen = {isOpenMenu}
+                                onClick = {() => setisOpenMenu(!isOpenMenu)} 
+                            />
+                        </div>
+                    </div>
+                </header>
+                {isOpenMenu? <Blackout height = {80} />:null}
+                <CategoriesList 
+                    isOpen = {isOpenMenu}
+                />
+                <main>
+                    {props.children}
+                </main>
+            </div>
+        </Fragment>
     )
 }
 
-export default Layuot

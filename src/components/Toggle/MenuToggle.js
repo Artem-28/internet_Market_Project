@@ -1,14 +1,15 @@
 import React from 'react'
 import './MenuToggle.scss'
 
-const MenuToggle = props =>{
+export default function MenuToggle({isOpen, onClick}){
+  
     return (
-            <div 
-                className ={props.isOpen? 'active': 'MenuToggle'}
-                onClick = {props.onClick}
-            >
-                <div /> <div /> <div /> <div />
-            </div>
+        <div 
+            className ={isOpen? 'active': 'MenuToggle'}
+            onClick = {onClick}
+        >
+            <div /> <div /> <div /> <div />
+        </div>
     )
 }
- export default MenuToggle
+

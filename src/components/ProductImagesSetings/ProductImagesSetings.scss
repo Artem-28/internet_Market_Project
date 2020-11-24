@@ -1,0 +1,17 @@
+@import '../../scss/mixins.scss';
+
+.ProductImagesSetings {
+    @include blockCenter($height: 600px, $width: 70%);
+    border-radius: 25px;
+    padding: 10px;
+    background: white;
+    .isideBlock {
+        @include blockCenter($height: 100%, $width: 100%);
+        border: 2px solid #330867;
+        border-radius: 25px;
+       
+    }
+    form {
+        display: flex;
+    }
+}

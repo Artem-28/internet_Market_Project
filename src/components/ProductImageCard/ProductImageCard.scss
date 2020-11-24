@@ -1,0 +1,8 @@
+@import '../../scss/mixins.scss';
+
+.ProductImageCard {
+    @include blockCenter($height: 300px, $width: 250px);
+    position: relative;
+    flex-direction: column;
+    border: 2px solid black;
+}

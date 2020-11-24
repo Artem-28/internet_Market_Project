@@ -1,0 +1,19 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+@include animationHiden(1s, 0.5s);
+.CategoriesList {
+    @include blockCenter($height: $categoriesListHeight, $width: $categoriesListWidth);
+    position: absolute;
+    border-radius: 25px;
+    margin-left: 10px;
+    background: linear-gradient(180deg, #30cfd0 0%, #330867 100%);
+    z-index: 100;
+
+    .insideBlock {
+        @include blockCenter($height: ($categoriesListHeight - 4px), $width: ($categoriesListWidth - 4px));
+        border-radius: 25px;
+        background: white
+    }  
+}
+
