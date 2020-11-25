@@ -1,8 +1,59 @@
 @import '../../scss/mixins.scss';
 
 .ProductImageCard {
-    @include blockCenter($height: 300px, $width: 250px);
+    color: #BC9CFF;
+    @include blockCenter($height: 400px, $width: 250px);
     position: relative;
     flex-direction: column;
     border: 2px solid black;
+    margin: 10px;
+    .conteiner {
+        @include blockCenter();
+        border-radius: 25px;
+        border: 2px solid #BC9CFF;
+        &:hover {box-shadow: 0 0 30px 10px #BC9CFF}
+    }
+    .sliderWrapper {
+        @include blockCenter($alignHorizontal: 'flex-start', $height: 80px);
+        flex-direction: column;
+        
+       
+        border: green 1px solid;
+    }
+
+    .sliderConteiner {
+        display: flex;
+        align-items: center;
+        i {
+            cursor: pointer;
+            &:hover {color: #8BA4F9;}
+            &:first-child {margin-right: 10px;}
+            &:last-child {margin-left: 10px;}
+        }
+    }
+   
+
+    .inputConteiner {
+        @include blockCenter();
+        position: relative;
+        flex-direction: column;
+        span {margin-top: 20px;text-align: center;}
+    }
+    input {
+        @include blockCenter();
+        cursor: pointer;
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-radius: 25px;
+        opacity: 0;
+    }
+
+    .imageConteiner {
+        width: 100%;
+        height: 100%;
+        border-radius: 25px;
+        position: relative;
+        overflow: hidden;
+    }
 }
