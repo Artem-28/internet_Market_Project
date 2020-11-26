@@ -6,7 +6,7 @@ import './ProductImagesSetings.scss'
 export default function ProductImagesSetings(){
     const [imagesCards, setImagesCards] = useState([])
 
-    const  resizeHandler = (value, id) =>{
+    function resizeHandler(value, id){
         imagesCards.map(imageData => {
             if(imageData.id === id){
                 imageData.width = value   
@@ -19,7 +19,7 @@ export default function ProductImagesSetings(){
     function addImage(){
         const imageData = {
             id: `images${Math.random()}`,
-            url: null,
+            url: false,
             left: 0,
             top: 0,
             width: 0
@@ -28,7 +28,7 @@ export default function ProductImagesSetings(){
         setImagesCards([...imagesCards]) 
     }
 
-    const addFile = (event, id)=>{
+    function addFile(event, id){
         let file =  event.target.files[0]
         const reader =  new FileReader()
         let fileData ={}
@@ -36,33 +36,54 @@ export default function ProductImagesSetings(){
           fileData.src =  reader.result
         }
         reader.readAsDataURL(file)
-        
+       
         imagesCards.map(imageData => {
             if(imageData.id === id){
-                imageData.url = URL.createObjectURL(file)   
+                imageData.url = file
             }
             return null
         })
         setImagesCards([...imagesCards])
       }
-    
-    function getFormData (){
-        const imagesList = document.forms.imagesSetings.imagesProduct 
-        for (var item of imagesList) {
-            item.getBoundingClientRect()
-          }
+
+    function savePositionImage(left, top, id){
+        imagesCards.map(imageData => {
+            if(imageData.id === id){
+                imageData.left = left
+                imageData.top = top
+            }
+            return null
+        })
+        setImagesCards([...imagesCards])
     }
+
+    function deleteImage (id) {
+        imagesCards.map((imageData, index) => {
+            if(imageData.id === id){
+                imagesCards.splice(index, 1)
+            }
+            return null
+        })
+        setImagesCards([...imagesCards])
+    }
+    
+    /* function getFormData (){
+       
+    } */
+    
     
     return(
         <div className = 'ProductImagesSetings'>
             <div className = 'isideBlock'>
                 <div className = 'imagesConteiner'>
-                    {imagesCards.map(image => (
+                    {imagesCards.map(imageData => (
                         <ProductImageCard 
-                            key = {image.id}
-                            image = {image}
+                            key = {imageData.id}
+                            imageData = {imageData}
                             onChange = {addFile}
                             resizeHandler = {resizeHandler}
+                            savePositionImage = {savePositionImage}
+                            deleteImage = {deleteImage}
                         />
                     ))}
                 </div>
@@ -70,7 +91,7 @@ export default function ProductImagesSetings(){
                 <AddImageButton 
                     onClick = {addImage}
                 />
-                <button onClick = {getFormData}>Click</button>
+                {/* <button onClick = {getFormData}>Click</button> */}
             </div>
         </div>
     )

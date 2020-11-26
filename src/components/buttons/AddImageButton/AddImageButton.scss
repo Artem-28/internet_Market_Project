@@ -1,10 +1,34 @@
 @import '../../../scss/mixins.scss';
+@import '../../../scss/variables.scss';
+
+  @keyframes blinking {
+    0% {
+        border-color: $purpleColor;
+        color: $purpleColor;
+        transform: scale(0.9, 0.9);
+    }
+    50% {
+        border-color: $blueColor;
+        color: $blueColor;
+        transform: scale(1.0, 1.0);
+    }
+    100% {
+        border-color: $purpleColor;
+        color: $purpleColor;
+        transform: scale(0.9, 0.9);
+    }
+  }
 
 .AddImageButton {
     @include blockCenter($height: 200px, $width: 200px);
     flex-direction: column;
-    border: 2px solid #086710;
+    border: 2px solid;
     border-radius: 25px;
+    font-weight: bold;
     cursor: pointer;
+    animation: blinking 2s infinite;
     span { margin-top: 20px; }
+    &:hover {
+        box-shadow: 0 0 30px 10px $blueColor
+    }
 }

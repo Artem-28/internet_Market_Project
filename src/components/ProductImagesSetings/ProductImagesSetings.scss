@@ -1,4 +1,5 @@
 @import '../../scss/mixins.scss';
+@import '../../scss/variables.scss';
 
 .ProductImagesSetings {
     @include blockCenter($height: 600px, $width: 70%);
@@ -7,9 +8,8 @@
     background: white;
     .isideBlock {
         @include blockCenter($height: 100%, $width: 100%);
-        border: 2px solid #330867;
+        border: 2px solid $blueColor;
         border-radius: 25px;
-       
     }
     .imagesConteiner {
         display: flex;

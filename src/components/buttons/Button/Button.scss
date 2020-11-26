@@ -1,0 +1,48 @@
+@import '../../../scss/mixins.scss';
+@import '../../../scss/variables.scss';
+.Button {
+    @include blockCenter($width: 124px, $height:40px);
+    border-radius: 25px;
+    background: linear-gradient(180deg, $purpleColor 0%, $blueColor 100%);
+    flex-direction: column;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    color: $purpleColor;
+    &:hover > .insideBlock {
+        background: linear-gradient(180deg, $purpleColor 0%, $blueColor 100%);
+        color: white;
+    }
+
+    &:disabled {
+        cursor: default;
+        opacity: 0.6;
+    }
+
+    &:disabled:hover > .insideBlock {
+        background: white;
+        color: $purpleColor;
+    }
+
+    &[type='reset']{
+        background: linear-gradient(180deg, $redColorDark 0%, $redColor 100%);
+        color: $redColor;
+        &:hover > .insideBlock {
+            background: linear-gradient(180deg, $redColorDark 0%, $redColor 100%);
+            color: white;
+        }
+        &:disabled:hover > .insideBlock {
+            background: white;
+            color: $redColor;
+        }
+    }
+
+    .insideBlock {
+        @include blockCenter($width: 120px, $height: 36px);
+        background: white;
+        border-radius: 25px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 14px;
+    }
+}
