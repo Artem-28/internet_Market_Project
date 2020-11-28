@@ -1,0 +1,12 @@
+@import '../../scss/mixins.scss';
+
+.SetingContentProject {
+    @include blockCenter($height: 700px, $width: 70%, $alignHorizontal: flex-start,);
+    padding: 20px;
+    border-radius: 25px;
+    background: white;
+    .SetingContentProject__CategoryListSeting {
+        @include blockCenter($height: 100%, $width: 50%);
+    }
+
+}

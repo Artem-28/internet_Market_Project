@@ -1,0 +1,22 @@
+@import '../../../scss/mixins.scss';
+@import '../../../scss/variables.scss';
+
+
+.CloseButton {
+    @include blockCenter($height: 40px, $width: 40px);
+    background: linear-gradient(180deg, $redColorDark 0%, $redColor 100%);
+    cursor: pointer;
+    border-radius: 10px;
+    .insideBlock {
+        @include blockCenter($height: 36px, $width: 36px);
+        background: white;
+        color: $redColor;
+        border-radius: 10px;
+        transition: all 0.5s;
+        &:hover {
+            background: linear-gradient(180deg, $redColorDark 0%, $redColor 100%);
+            color: white;
+            transition: all 0.5s;
+        }
+    }
+}

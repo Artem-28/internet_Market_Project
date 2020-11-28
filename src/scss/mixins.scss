@@ -17,7 +17,28 @@
 @mixin animationHiden ($enter, $exit) {
     .enter { opacity: 0; }
     .enter-active { opacity: 1; transition: opacity $enter; }
-    .exit { opacity: $exit; }
+    .exit { opacity: 1; }
     .exit-active { opacity: 0; transition: opacity $exit; }
     .exit-done { opacity: 0; }
+}
+
+@mixin animationHidenTranslateY ($enter, $exit, $enterMove, $activeMove, $doneMove) {
+    .enter { 
+        opacity: 0; 
+        transform: translateY($enterMove); 
+    }
+    .enter-active { 
+        opacity: 1; 
+        transform: translateY($activeMove); 
+        transition: all $enter; 
+    }
+    .enter-done {
+        transform: translateY($doneMove); 
+        transition: all $exit
+    }
+    .exit-active { 
+        opacity: 0; 
+        transform: translateY($enterMove);
+        transition: all $exit;
+    }
 }

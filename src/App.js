@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.scss'
-import  Layuot  from './hoc/Layuot/Layuot'
+import  {Layuot}  from './hoc/Layuot/Layuot'
 import  Home  from './pages/Home'
 
 function App() {

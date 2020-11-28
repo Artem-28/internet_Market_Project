@@ -12,6 +12,7 @@
     &:hover > .insideBlock {
         background: linear-gradient(180deg, $purpleColor 0%, $blueColor 100%);
         color: white;
+        transition: all 0.5s;
     }
 
     &:disabled {
@@ -22,6 +23,7 @@
     &:disabled:hover > .insideBlock {
         background: white;
         color: $purpleColor;
+        transition: all 0.5s;
     }
 
     &[type='reset']{
@@ -30,10 +32,12 @@
         &:hover > .insideBlock {
             background: linear-gradient(180deg, $redColorDark 0%, $redColor 100%);
             color: white;
+            transition: all 0.5s;
         }
         &:disabled:hover > .insideBlock {
             background: white;
             color: $redColor;
+            transition: all 0.5s;
         }
     }
 
@@ -44,5 +48,6 @@
         text-transform: uppercase;
         font-weight: bold;
         font-size: 14px;
+        transition: all 0.5s;
     }
 }

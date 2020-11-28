@@ -1,16 +1,16 @@
 import React, { Fragment, useState } from 'react'
 import Blackout from '../../components/Blackout/Blackout'
-import CategoriesList from '../../components/CategoriesList/CategoriesList'
-import ProductImagesSetings from '../../components/ProductImagesSetings/ProductImagesSetings'
+import {CategoriesList} from '../../components/CategoriesList/CategoriesList'
+import SetingContentProject from '../../components/SetingContentProject/SetingContentProject'
 import MenuToggle from '../../components/Toggle/MenuToggle'
 import './Layuot.scss'
 
-export default function Layuot(props){
+export function Layuot(props){
     const [isOpenMenu, setisOpenMenu] = useState(false)
     return (
         <Fragment>
              <Blackout>
-                 <ProductImagesSetings />
+                <SetingContentProject />
              </Blackout>
             <div className='Layuot'>
                 <header>

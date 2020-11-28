@@ -1,17 +1,37 @@
 @import '../../scss/mixins.scss';
 @import '../../scss/variables.scss';
 
+
+@include animationHidenTranslateY(1s, 0.5s, -100px, 20px, 0px);
 .ProductImagesSetings {
-    @include blockCenter($height: 600px, $width: 70%);
+    @include blockCenter($height: 650px, $width: 70%);
     border-radius: 25px;
     padding: 10px;
     background: white;
+    
     .isideBlock {
-        @include blockCenter($height: 100%, $width: 100%);
+        @include blockCenter($height: 100%, $width: 100%, $alignVertical: flex-start);
+        position: relative;
         border: 2px solid $blueColor;
         border-radius: 25px;
     }
-    .imagesConteiner {
+    .contextBlock {
+        margin-top: 50px;
+        height: 500px;
         display: flex;
+        overflow: auto;
+        width: 98%;
+    }
+    .imagesConteiner { @include blockCenter($height: 480px, $width: auto); }
+    .conteinerButton { width: 200px; }
+    .conteinerButtonSave {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+    }
+    .conteinerCloseButton {
+        position: absolute;
+        right: 10px;
+        top: 10px;
     }
 }

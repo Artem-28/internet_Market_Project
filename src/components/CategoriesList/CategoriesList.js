@@ -1,8 +1,11 @@
 import React from 'react'
 import { CSSTransition } from 'react-transition-group'
+/* import { CSSTransition } from 'react-transition-group' */
+
+
 import './CategoriesList.scss'
 
-export default function CategoriesList({isOpen}){
+export  function CategoriesList({isOpen}){
     return (
         <CSSTransition
             in={isOpen}
@@ -13,11 +16,12 @@ export default function CategoriesList({isOpen}){
             unmountOnExit
             mountOnEnter
         >
+       
             <div className = 'CategoriesList'>
                 <div className = 'insideBlock'>
                     <h1>CategoriesList</h1>
                 </div>
             </div>
-        </CSSTransition>
+        </CSSTransition>  
     )
 }

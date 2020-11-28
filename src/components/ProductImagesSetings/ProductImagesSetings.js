@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import AddImageButton from '../buttons/AddImageButton/AddImageButton'
+import Button from '../buttons/Button/Button'
+import CloseButton from '../buttons/CloseButton/CloseButton'
 import ProductImageCard from '../ProductImageCard/ProductImageCard'
 import './ProductImagesSetings.scss'
 
 export default function ProductImagesSetings(){
     const [imagesCards, setImagesCards] = useState([])
+    const [formValid, setFormValid] = useState(false)
 
     function resizeHandler(value, id){
         imagesCards.map(imageData => {
@@ -70,28 +74,69 @@ export default function ProductImagesSetings(){
     /* function getFormData (){
        
     } */
+
+    useEffect(()=>{
+        const conteiner = document.getElementById('ProductImagesSetings-contextBlock')
+        const conteinerWidth = conteiner.getBoundingClientRect().width
+        const insideBlockWidth = conteiner.firstElementChild.getBoundingClientRect().width
+        conteinerWidth > insideBlockWidth 
+            ? conteiner.style.justifyContent = 'center' 
+            : conteiner.style.justifyContent = 'flex-start'
+    })
+
+    useEffect(()=>{
+        let isValid = imagesCards.length !== 0 ? true : false
+        imagesCards.map(imageData => {
+            return isValid = imageData.url && isValid
+        })
+        setFormValid(isValid)
+    }, [imagesCards])
     
     
     return(
         <div className = 'ProductImagesSetings'>
             <div className = 'isideBlock'>
-                <div className = 'imagesConteiner'>
-                    {imagesCards.map(imageData => (
-                        <ProductImageCard 
-                            key = {imageData.id}
-                            imageData = {imageData}
-                            onChange = {addFile}
-                            resizeHandler = {resizeHandler}
-                            savePositionImage = {savePositionImage}
-                            deleteImage = {deleteImage}
-                        />
-                    ))}
+                <div className = 'contextBlock' id='ProductImagesSetings-contextBlock'>
+                   <div className = 'imagesConteiner'>
+                       <TransitionGroup component = {null}>
+                       {imagesCards.map(imageData => (
+                            <CSSTransition 
+                                key = {imageData.id}
+                                timeout={{
+                                    enter: 1000,
+                                    exit: 500
+                                }}
+                                unmountOnExit
+                                mountOnEnter
+                            >
+                                <ProductImageCard 
+                                    imageData = {imageData}
+                                    onChange = {addFile}
+                                    resizeHandler = {resizeHandler}
+                                    savePositionImage = {savePositionImage}
+                                    deleteImage = {deleteImage}
+                                />
+                             </CSSTransition>
+                        ))}
+                       </TransitionGroup>
+                        <div className = 'conteinerButton'>
+                            <AddImageButton 
+                                onClick = {addImage}
+                            />
+                        </div>
+                    </div>
+                </div> 
+                <div className = 'conteinerButtonSave'>
+                    <Button 
+                        width = {230}
+                        disabled = {!formValid}
+                    >
+                        сохранить изображения
+                        </Button> 
+                </div> 
+                <div className = 'conteinerCloseButton'>
+                    <CloseButton />
                 </div>
-               
-                <AddImageButton 
-                    onClick = {addImage}
-                />
-                {/* <button onClick = {getFormData}>Click</button> */}
             </div>
         </div>
     )
