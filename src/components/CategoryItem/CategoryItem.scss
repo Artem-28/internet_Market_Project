@@ -1,0 +1,23 @@
+@import '../../scss/variables.scss';
+
+.CategoryItem {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border: 2px solid white;
+    cursor: pointer;
+    font-weight: bold;
+    color: $greyColor;
+    transition: all 0.3s;
+    & > i {
+        margin-left: 10px;
+        margin-right: 10px;
+        color: #ffb20d;
+    }
+    &:hover {
+        color: $purpleColor;
+        border: 2px solid $purpleColor;
+        border-radius: 10px;
+        transition: all 0.3s;
+    }
+}

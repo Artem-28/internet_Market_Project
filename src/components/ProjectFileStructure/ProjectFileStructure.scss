@@ -1,0 +1,33 @@
+@import '../../scss/mixins.scss';
+.ProjectFileStructure {
+    @include blockCenter($height: auto, $width: 95%);
+    top: 10px;
+    flex-direction: column;
+    position: absolute;
+    .ProjectFileStructure__subcategory {
+        width: 100%;
+        display: none;
+        border: solid 1px red;
+    }
+    .ProjectFileStructure__subcategory__inputConteiner{
+        @include blockCenter($alignHorizontal: space-between, $height: auto, $width: 270px);
+        margin-left: 10px;
+    }
+
+    .ProjectFileStructure__subcategory-drop {
+        display: block;
+    }
+    .ProjectFileStructure__subcategory__conteiner{
+        border: solid 1px black;
+        background: black;
+    }
+    /* .ProjectFileStructure__subcategory:nth-child(2n){
+        padding-left: 50px;
+        border: black 1px solid;
+        
+        & > .ProjectFileStructure__subcategory__inputConteiner {
+            margin-bottom: 10px;
+        }
+    } */
+  
+}
