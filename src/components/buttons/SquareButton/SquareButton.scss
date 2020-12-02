@@ -1,0 +1,46 @@
+@import '../../../scss/variables.scss';
+@import '../../../scss/mixins.scss';
+.SquareButton {
+    @include blockCenter($width: 35px, $height: 35px);
+    border-radius: 10px;
+    transition: all 0.5s;
+    cursor: pointer;
+    .SquareButton__insideBlack {
+        @include blockCenter($width: 31px, $height: 31px);
+        background: white;
+        border-radius: 10px;
+    }
+    &:hover {
+        .SquareButton__insideBlack{ color: white; transition: all 0.5s; }
+    }
+}
+
+.edit {
+    background: linear-gradient(180deg, $purpleColor 0%, $blueColor 100%);
+    & > .SquareButton__insideBlack { color: $purpleColor; }
+    &:hover {
+        .SquareButton__insideBlack {
+            background: linear-gradient(180deg, $purpleColor 0%, $blueColor 100%);
+        }
+    }
+}
+
+.delete {
+    background: linear-gradient(180deg, $redColor 0%, $redColorDark 100%);
+    & > .SquareButton__insideBlack { color: $redColor; }
+    &:hover {
+        .SquareButton__insideBlack {
+            background: linear-gradient(180deg, $redColor 0%, $redColorDark 100%);
+        }
+    }
+}
+
+.add {
+    background: linear-gradient(180deg, $greenColor 0%, $lightGreenColor 100%);
+    & > .SquareButton__insideBlack { color: $greenColor; }
+    &:hover {
+        .SquareButton__insideBlack {
+            background: linear-gradient(180deg, $greenColor 0%, $lightGreenColor 100%);
+        }
+    }
+}

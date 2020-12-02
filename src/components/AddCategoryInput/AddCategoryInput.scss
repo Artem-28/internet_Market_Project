@@ -1,0 +1,9 @@
+@import '../../scss/mixins.scss';
+.AddCategoryInput {
+    @include blockCenter($height: auto, $width: 100%, $alignHorizontal: space-between);
+    margin-left: 10px;
+    margin-bottom: 5px;
+    .AddCategoryInput__button {
+        margin-right: 10px;
+    }
+}

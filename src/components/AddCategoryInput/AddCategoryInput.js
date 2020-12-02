@@ -1,11 +1,12 @@
 import { TextField } from '@material-ui/core'
 import React, {useState} from 'react'
-import AddButton from '../buttons/AddButton/AddButton'
+import './AddCategoryInput.scss'
+import SquareButton from '../buttons/SquareButton/SquareButton'
 
 export default function AddCategoryInput({category, onClick}){
     const [newCategoryName, setNewCategoryName] = useState('')
     return (
-        <React.Fragment>
+        <div className = 'AddCategoryInput'>
             <TextField 
                 id={'standard-basic'+Math.random()} 
                 label="Название подкатегории" 
@@ -13,7 +14,12 @@ export default function AddCategoryInput({category, onClick}){
                 value = {newCategoryName}
                 onChange = {(event)=>setNewCategoryName(event.target.value)}
             />
-            <AddButton onClick = {() => onClick(`${category}/${newCategoryName}`,newCategoryName )}/>
-        </React.Fragment>
+            <div className = 'AddCategoryInput__button'>
+                <SquareButton 
+                    type = 'add' 
+                    onClick = {() => onClick(`${category}/${newCategoryName}`,newCategoryName )}
+                />
+            </div>
+        </div>
     )
 }

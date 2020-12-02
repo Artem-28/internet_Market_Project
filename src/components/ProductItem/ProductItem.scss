@@ -1,0 +1,36 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+
+.ProductItem {
+    @include blockCenter($alignHorizontal: space-between, $alignVertical: center, $height: 40px,);
+    margin-bottom: 5px;
+    
+    color: $greyColor;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    .ProductItem__name {
+        display: flex;
+        align-items: center;
+    }
+    .ProductItem__name > i {
+        margin-left: 10px;
+        margin-right: 10px;
+        color: $blueColor;
+    }
+    .ProductItem__button{
+        display: flex;
+        justify-content: space-between;
+        width: 80px;
+    }
+    
+}
+.ProductItem:hover {
+    .ProductItem__name > i {
+        color: white;
+    }
+    color: white;
+    background: linear-gradient(90deg, $purpleColor 0%, $blueColor 30%, white 80%,  white 100%);
+    border-radius: 10px;
+    transition: all 0.3s;
+}
