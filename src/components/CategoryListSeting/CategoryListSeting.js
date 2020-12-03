@@ -1,41 +1,19 @@
 import { TextField } from '@material-ui/core'
-import React, {useState, useEffect} from 'react'
-import firebase from 'firebase/app'
-import 'firebase/database'
+import React, {useState, useEffect, useReducer} from 'react'
 import Button from '../buttons/Button/Button'
 import './CategoryListSeting.scss'
 import ProjectFileStructure from '../ProjectFileStructure/ProjectFileStructure'
-/* import categoryListReduser from '../../reduser/categoriesListReduser' */
+import categoryListReduser from '../../reduser/categoriesListReduser'
+import { addNewCategory, getProductsList } from '../../action/actionCategoriesListReduser'
+
+
 
 export default function CategoryListSeting(){
 
     const [newCategoryName, setNewCategoryName] = useState('')
-    const [categoryList, setList] = useState({})
+    const [categoryList, dispatch] = useReducer(categoryListReduser, null)
 
-    /* const [categoryList, dispatch] = useReducer(categoryListReduser, {}) */
-
-    function addNewCategory(path, name){
-        firebase.database().ref('products/category/' + path).set({
-            categoryName: name,
-            path: 'level-1'
-        }).then(()=>{
-           getProductsList()
-        })
-    }
-
-    
-
-    function getProductsList(){
-        firebase.database().ref('products/').once('value').then(category => { 
-            setList({...category.val()})
-        })
-    }
-
-
-    useEffect(() => {
-        getProductsList()
-    }, [])
-    
+    useEffect(() => getProductsList(dispatch), [])
     
     return (
         <div className = 'CategoryListSeting'>
@@ -54,16 +32,14 @@ export default function CategoryListSeting(){
                 <div className = 'CategoryListSeting__addCategory__conteiner__button'>
                     <Button 
                         width = {200}
-                        onClick = {()=>addNewCategory(newCategoryName, newCategoryName)}
+                        onClick = {()=>addNewCategory(newCategoryName, newCategoryName, dispatch)}
                     >Добавить категорию</Button>
                 </div>
             </div>
             <div className = 'CategoryListSeting__list'>
-               <ProjectFileStructure 
-                    list = {categoryList.category}
-                    onClick = {addNewCategory}
-               />
+                <ProjectFileStructure list = {categoryList?categoryList.category:null} />
             </div>
         </div>
+
     )
 }

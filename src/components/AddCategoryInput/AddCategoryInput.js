@@ -2,9 +2,12 @@ import { TextField } from '@material-ui/core'
 import React, {useState} from 'react'
 import './AddCategoryInput.scss'
 import SquareButton from '../buttons/SquareButton/SquareButton'
+import { addNewCategory } from '../../action/actionCategoriesListReduser'
 
-export default function AddCategoryInput({category, onClick}){
+
+export default function AddCategoryInput({category}){
     const [newCategoryName, setNewCategoryName] = useState('')
+
     return (
         <div className = 'AddCategoryInput'>
             <TextField 
@@ -17,7 +20,7 @@ export default function AddCategoryInput({category, onClick}){
             <div className = 'AddCategoryInput__button'>
                 <SquareButton 
                     type = 'add' 
-                    onClick = {() => onClick(`${category}/${newCategoryName}`,newCategoryName )}
+                    onClick = {() =>addNewCategory(`${category}/${newCategoryName}`,newCategoryName)}
                 />
             </div>
         </div>

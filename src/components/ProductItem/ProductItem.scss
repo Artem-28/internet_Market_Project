@@ -21,7 +21,7 @@
     .ProductItem__button{
         display: flex;
         justify-content: space-between;
-        width: 80px;
+        width: 70px;
     }
     
 }
@@ -33,4 +33,5 @@
     background: linear-gradient(90deg, $purpleColor 0%, $blueColor 30%, white 80%,  white 100%);
     border-radius: 10px;
     transition: all 0.3s;
+    
 }

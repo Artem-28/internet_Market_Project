@@ -4,20 +4,36 @@
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border: 2px solid white;
     cursor: pointer;
     font-weight: bold;
     color: $greyColor;
     transition: all 0.3s;
-    & > i {
-        margin-left: 10px;
-        margin-right: 10px;
-        color: #ffb20d;
+    .CategoryItem__name {
+        display: flex;
+        align-items: center;
+        & > i {
+            margin-left: 10px;
+            margin-right: 10px;
+            color: #ffb20d;
+        }
+    }
+    .CategoryItem__button {
+        opacity: 0;
+        display: flex;
+        justify-content: space-between;
+        width: 70px;
+        transition: all 0.3s;
     }
     &:hover {
         color: $purpleColor;
         border: 2px solid $purpleColor;
         border-radius: 10px;
         transition: all 0.3s;
+        .CategoryItem__button {
+            opacity: 1;
+            transition: all 0.3s;
+        }
     }
 }
