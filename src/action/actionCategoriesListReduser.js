@@ -13,13 +13,14 @@ export function getProductsList(dispatch){
     })
 }
 
-export function addNewCategory(path, name, dispatch){
-    firebase.database().ref('products/category/' + path).set({
-        categoryName: name,
-        path: path
+export function addNewCategory(path, name){
+    let newCategory = firebase.database().ref(`products/category/`+path).push().key
+    firebase.database().ref(`products/category/${path}`+newCategory).set({
+        title: name,
+        key: newCategory
     }).then()
 }
 
-export function removeCategory(path, dispatch){
+export function removeCategory(path){
     firebase.database().ref('products/category/' + path).set(null).then()
 }

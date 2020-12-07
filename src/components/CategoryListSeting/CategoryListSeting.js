@@ -13,7 +13,9 @@ export default function CategoryListSeting(){
     const [newCategoryName, setNewCategoryName] = useState('')
     const [categoryList, dispatch] = useReducer(categoryListReduser, null)
 
-    useEffect(() => getProductsList(dispatch), [])
+    useEffect(() => {
+        getProductsList(dispatch)
+    }, [])
     
     return (
         <div className = 'CategoryListSeting'>
@@ -32,7 +34,7 @@ export default function CategoryListSeting(){
                 <div className = 'CategoryListSeting__addCategory__conteiner__button'>
                     <Button 
                         width = {200}
-                        onClick = {()=>addNewCategory(newCategoryName, newCategoryName, dispatch)}
+                        onClick = {()=>addNewCategory('', newCategoryName, dispatch)}
                     >Добавить категорию</Button>
                 </div>
             </div>

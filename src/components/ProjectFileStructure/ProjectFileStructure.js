@@ -8,27 +8,36 @@ import './ProjectFileStructure.scss'
 
 export default function ProjectFileStructure ({list}){
 
+
     return (
         <div className = 'ProjectFileStructure'>
             {!!list
-            ? Object.keys(list).map(category => {
+            ?Object.keys(list).map(categoryKey => {
                 return (
-                    <React.Fragment key = {category}>
-                        <CategoryItem name = {category} path={category}/>
+                    <React.Fragment key = {categoryKey}>
+                        <CategoryItem name = {list[categoryKey].title} path = {categoryKey} />
                         <div className = 'ProjectFileStructure__subcategory'>
-                            <AddCategoryInput category = {category} />
-                            {Object.keys(list[category]).map(subcategory => {
-                                if(subcategory !== 'categoryName' && subcategory !== 'path'){
+                            <AddCategoryInput path = {categoryKey} />
+                            {Object.keys(list[categoryKey]).map(subcategoryKey => {
+                                const subcategoryList = list[categoryKey][subcategoryKey]
+                                if(!!subcategoryList.title){
                                     return (
-                                        <React.Fragment key = {subcategory}>
-                                            <CategoryItem name ={subcategory} path = {`${category}/${subcategory}`} />
+                                        <React.Fragment key = {subcategoryKey}>
+                                            <CategoryItem 
+                                                name = {subcategoryList.title}
+                                                path = {`${categoryKey}/${subcategoryKey}`}
+                                            />
                                             <div className = 'ProjectFileStructure__subcategory'>
-                                                <AddCategoryInput category = {`${category}/${subcategory}`}/>
-                                                {Object.keys(list[category][subcategory]).map(subSubCategory => {
-                                                    if(subSubCategory !== 'categoryName' && subSubCategory !== 'path'){
-                                                        return(
-                                                            <React.Fragment key = {subSubCategory}>
-                                                                <CategoryItem name ={subSubCategory} path = {`${category}/${subcategory}/${subSubCategory}`} />
+                                                <AddCategoryInput path = {`${categoryKey}/${subcategoryKey}`} />
+                                                {Object.keys(subcategoryList).map(subSubCategoryKey => {
+                                                    const subSubCategoryList = subcategoryList[subSubCategoryKey]
+                                                    if(!!subSubCategoryList.title){
+                                                        return (
+                                                            <React.Fragment key = {subSubCategoryKey}>
+                                                                <CategoryItem
+                                                                    name = {subSubCategoryList.title}
+                                                                    path = {`${categoryKey}/${subcategoryKey}/${subSubCategoryKey}`}
+                                                                />
                                                                 <div className = 'ProjectFileStructure__subcategory'>
                                                                     <div className = 'ProjectFileStructure__subcategory__button'>
                                                                         <Button
@@ -36,26 +45,34 @@ export default function ProjectFileStructure ({list}){
                                                                             height = {25}
                                                                         >добавить товар</Button>
                                                                     </div>
-                                                                    {Object.keys(list[category][subcategory][subSubCategory]).map(product => {
-                                                                        if(product /* !== 'categoryName' && product !== 'path' */){
-                                                                            return <ProductItem name ={product} key = {product} />
-                                                                        } else { return null}
+                                                                    {Object.keys(subSubCategoryList).map(productKey => {
+                                                                        const product = subSubCategoryList[productKey]
+                                                                        if(!!product.title){
+                                                                            return (
+                                                                                <ProductItem name = {product} key = {productKey} />
+                                                                            )
+                                                                        }else{return null}
                                                                     })}
                                                                 </div>
                                                             </React.Fragment>
                                                         )
-                                                    }else{ return null }
+                                                    }else {return null}
                                                 })}
                                             </div>
                                         </React.Fragment>
+                                        
                                     )
-                                } else {return null}
+                                }else {
+                                    return null
+                                }
+                                
                             })}
                         </div>
                     </React.Fragment>
+                   
                 )
             })
-            : <div className = 'ProjectFileStructure__loading'>Загрузка</div>
+            : null
             }
         </div>
     )

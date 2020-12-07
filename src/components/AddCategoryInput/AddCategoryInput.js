@@ -5,7 +5,9 @@ import SquareButton from '../buttons/SquareButton/SquareButton'
 import { addNewCategory } from '../../action/actionCategoriesListReduser'
 
 
-export default function AddCategoryInput({category}){
+export default function AddCategoryInput({path}){
+   
+   
     const [newCategoryName, setNewCategoryName] = useState('')
 
     return (
@@ -20,7 +22,7 @@ export default function AddCategoryInput({category}){
             <div className = 'AddCategoryInput__button'>
                 <SquareButton 
                     type = 'add' 
-                    onClick = {() =>addNewCategory(`${category}/${newCategoryName}`,newCategoryName)}
+                    onClick = {() =>addNewCategory(`${path}/`,newCategoryName)}
                 />
             </div>
         </div>
