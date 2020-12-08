@@ -11,7 +11,7 @@ export default function Button(props){
             }}
             disabled = {props.disabled}
             type = {props.type}
-            onClick = {!props.disabled ?props.onClick :null}
+            onClick = {!props.disabled ? props.onClick : null}
         >
             <div 
                 className = 'insideBlock'
