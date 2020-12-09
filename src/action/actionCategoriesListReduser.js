@@ -4,6 +4,7 @@ import { GET_GATEGORIES_LIST } from "./actionType"
 
 
 
+
 export function getProductsList(dispatch){
     firebase.database().ref('products/').on('value', category => { 
         dispatch({
