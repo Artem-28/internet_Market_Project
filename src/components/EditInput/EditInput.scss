@@ -1,0 +1,31 @@
+@import '../../scss/variables.scss';
+
+.EditInput {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    .EditInput__input {
+        font-weight: bold;
+        font-size: 15px;
+        color: $greyColor;
+        border: none;
+        border-bottom: $purpleColor  2px solid;
+
+    }
+    .EditInput__input:focus {
+        outline: none;
+    }
+    .EditInput__bottom {
+        position: absolute;
+        bottom: -1px;
+        height: 3px;
+        width: 0%;
+        background: $blueColor;
+        transition: all 0.5s;
+    }
+}
+
+.EditInput:focus-within > .EditInput__bottom {
+    width: 100%;
+    transition: all 0.5s;
+}

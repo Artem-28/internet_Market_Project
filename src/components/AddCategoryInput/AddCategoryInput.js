@@ -18,11 +18,13 @@ export default function AddCategoryInput({path}){
                 name = 'createNewCategory'
                 label = 'Название подкатегории'
                 value = {newCategoryName}
+                small = {true}
                 onChange = {(event)=>setNewCategoryName(event.target.value)}
             />
             <div className = 'AddCategoryInput__button'>
                 <SquareButton 
                     type = 'add' 
+                    disabled = {!newCategoryName}
                     onClick = {() =>addNewCategory(`${path}/`,newCategoryName, clearInput)}
                 />
             </div>

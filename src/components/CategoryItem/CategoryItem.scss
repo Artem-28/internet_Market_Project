@@ -19,6 +19,11 @@
             color: #ffb20d;
         }
     }
+
+    .CategoryItem__name > span {
+        /* border: 1px solid black; */
+        height: 25px;
+    }
     .CategoryItem__button {
         opacity: 0;
         display: flex;

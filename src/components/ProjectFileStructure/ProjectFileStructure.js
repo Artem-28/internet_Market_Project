@@ -41,8 +41,9 @@ export default function ProjectFileStructure ({list}){
                                                                 <div className = 'ProjectFileStructure__subcategory'>
                                                                     <div className = 'ProjectFileStructure__subcategory__button'>
                                                                         <Button
-                                                                            width = {200}
-                                                                            height = {25}
+                                                                            width = {110}
+                                                                            height = {20}
+                                                                            fontSize ={10}
                                                                         >добавить товар</Button>
                                                                     </div>
                                                                     {Object.keys(subSubCategoryList).map(productKey => {

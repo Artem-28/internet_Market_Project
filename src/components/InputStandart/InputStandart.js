@@ -5,10 +5,14 @@ import './InputStandart.scss'
 
 export default function InputStandart(props){
     const htmlFor = `${props.type}-${Math.random()}`
+    const cls = ['InputStandart__wrapper']
+    if(props.small){
+        cls.push('small')
+    }
     
     return (
-        <div className = 'InputStandart__wrapper'>
-            <div className = 'InputStandart error'>
+        <div className = {cls.join(' ')}>
+            <div className = 'InputStandart'>
                 <div className = 'InputStandart__inside'>
                     <label 
                         className = 'InputStandart__inside__label--blur'

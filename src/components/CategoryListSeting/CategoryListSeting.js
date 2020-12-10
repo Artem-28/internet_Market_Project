@@ -37,6 +37,7 @@ export default function CategoryListSeting(){
                 <div className = 'CategoryListSeting__addCategory__conteiner__button'>
                     <Button 
                         width = {200}
+                        disabled = {!newCategoryName ?true :null}
                         onClick = {()=>addNewCategory('', newCategoryName, clearInput)}
                     >Добавить категорию</Button>
                 </div>

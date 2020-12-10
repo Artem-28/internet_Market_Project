@@ -15,7 +15,7 @@
     }
 }
 
-.edit {
+.edit, .cancel {
     background: linear-gradient(180deg, $purpleColor 0%, $blueColor 100%);
     & > .SquareButton__insideBlack { color: $purpleColor; }
     &:hover {
@@ -35,7 +35,7 @@
     }
 }
 
-.add {
+.add, .save {
     background: linear-gradient(180deg, $greenColor 0%, $lightGreenColor 100%);
     & > .SquareButton__insideBlack { color: $greenColor; }
     &:hover {
@@ -43,4 +43,15 @@
             background: linear-gradient(180deg, $greenColor 0%, $lightGreenColor 100%);
         }
     }
+}
+
+.disabled {
+    background: $greyColor;
+    cursor: default;
+    opacity: 0.5;
+    & > .SquareButton__insideBlack { color: $greyColor; }
+    &:hover > .SquareButton__insideBlack {
+        background: white;
+        color: $greyColor; 
+    }   
 }

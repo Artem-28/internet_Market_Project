@@ -87,14 +87,28 @@
     color: $redColor;
     font-size: 12px;
     bottom: -2px;
-    left: 25px;
     display: none;
 }
 
 .error {
-    background: $redColor;
+    .InputStandart {background: $redColor;}
     .InputStandart__inside__label--focus {color: $redColorDark;}
     .InputStandart__bottom {background: $redColor;}
     .InputStandart__errorMessage {display: block;}
     input {color: $redColor;}
+}
+
+.small {
+    height: 50px;
+    width: 200px;
+    .InputStandart {height: 30px; width: 200px;}
+    .InputStandart__inside {height: 26px; width: 196px;}
+    .InputStandart__bottom {bottom: 9px;}
+    .InputStandart__inside__label--blur {font-size: 15px;}
+    .InputStandart__inside__label--focus {
+        transform: translate(-15px, -15px);
+        font-size: 12px;
+    }
+    .InputStandart__errorMessage { font-size: 11px;}
+    .InputStandart__inside > input {font-size: 14px;}
 }
