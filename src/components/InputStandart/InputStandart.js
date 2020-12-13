@@ -1,14 +1,15 @@
 import React from 'react'
-import { blurHandler, focusHandler } from './inputHandler'
+import { blurHandler, focusHandler, isInvalid } from './inputHandler'
 import './InputStandart.scss'
+
 
 
 export default function InputStandart(props){
     const htmlFor = `${props.type}-${Math.random()}`
     const cls = ['InputStandart__wrapper']
-    if(props.small){
-        cls.push('small')
-    }
+    if(props.small) cls.push('small')
+    if(isInvalid(props)) cls.push('error')
+    if(props.disabled) cls.push('inputDisabled')
     
     return (
         <div className = {cls.join(' ')}>
@@ -27,6 +28,7 @@ export default function InputStandart(props){
                         onFocus = {(event) => focusHandler(event)}
                         onBlur = {(event) => blurHandler(event)}
                         onChange = {props.onChange}
+                        disabled = {props.disabled}
                     />
                     <div className = 'InputStandart__inside__hidden' />
                 </div>

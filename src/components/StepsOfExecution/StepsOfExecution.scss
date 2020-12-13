@@ -1,0 +1,68 @@
+@import '../../scss/variables.scss';
+@import '../../scss/mixins.scss';
+.StepsOfExecution {
+    @include blockCenter($height: auto);
+    position: relative;
+    border-radius: 25px;
+    .StepsOfExecution__tracker {
+        @include blockCenter($alignHorizontal: space-between, $height: 4px);
+        border-radius: 25px;
+        background:  rgba(0, 0, 0, 0.1);
+    }
+    .StepsOfExecution__tracker--success {
+        @include blockCenter($alignHorizontal: space-between, $height: 4px);
+        position: absolute;
+        background: linear-gradient(90deg, $greenColor 0%, $lightGreenColor 100%);
+        transition: all 1s;
+    }
+    .StepsOfExecution__tracker__step {
+        @include blockCenter($height: 55px, $width: 55px);
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+    .StepsOfExecution__tracker__step__inside {
+        @include blockCenter($height: 46px, $width: 46px);
+        border-radius: 50%;
+        background: white;
+        z-index: 1;
+        & > span {
+            font-weight: bold;
+            font-size: 30px;
+            color:  rgba(0, 0, 0, 0.2);
+        }
+    }
+    .success {
+        background: linear-gradient(180deg, $greenColor 0%, $lightGreenColor 100%);
+        & > .StepsOfExecution__tracker__step__inside {color: $greenColor;}
+    }
+
+
+    .current {
+        background: $lightGreenColor;
+        & > .StepsOfExecution__tracker__step__inside > span {
+            color: $lightGreenColor;
+        }
+    }
+    .current::before {
+        content: '';
+        position: absolute;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        background: $lightGreenColor;
+        animation: my-animation 1s infinite;
+    }
+}
+
+@keyframes my-animation {
+    0%   { 
+        opacity: 1; 
+    }
+    100% {
+        transform: scale(1.5, 1.5);
+        opacity: 0; 
+    }
+}
+
+

@@ -106,7 +106,7 @@ export default function ProductImagesSetings(){
                                     enter: 1000,
                                     exit: 500
                                 }}
-                                unmountOnExit
+                                unmountOnExit 
                                 mountOnEnter
                             >
                                 <ProductImageCard 

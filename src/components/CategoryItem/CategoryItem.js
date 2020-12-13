@@ -4,14 +4,15 @@ import SquareButton from '../buttons/SquareButton/SquareButton'
 import EditInput from '../EditInput/EditInput'
 import './CategoryItem.scss'
 
-export default function CategoryItem ({name, path}){
+export default function CategoryItem ({name, path, id}){
     const initialState = {
         isEdit: false,
         name: name,
     }
     const [edit, setEdit] = useState(initialState)
 
-    function editHandler(){
+    function editHandler(event){
+        event.stopPropagation()
         edit.isEdit = !edit.isEdit
         setEdit({...edit})
     }
@@ -22,7 +23,7 @@ export default function CategoryItem ({name, path}){
     }
 
     function dropCategory (){
-        const elem = document.getElementById(name)
+        const elem = document.getElementById(id)
         elem.nextElementSibling.classList.toggle('ProjectFileStructure__subcategory-drop')
         elem.firstElementChild.firstElementChild.classList.toggle('fa-folder')
         elem.firstElementChild.firstElementChild.classList.toggle('fa-folder-open')
@@ -32,7 +33,7 @@ export default function CategoryItem ({name, path}){
     return  (
         <div 
             className = 'CategoryItem' 
-            id = {name}
+            id = {id}
             onClick = {() => dropCategory()}
 
         >
@@ -46,15 +47,14 @@ export default function CategoryItem ({name, path}){
                         />
                     : name}
                 </span>
-            </div>
-            
+            </div> 
             <div className = 'CategoryItem__button'>
                 <SquareButton 
                     type = {edit.isEdit ? 'save' : 'edit'}
                     onClick = {
                         edit.isEdit 
-                        ? () => uppdateCategory(path, edit.name, editHandler) 
-                        : editHandler
+                        ? event => uppdateCategory(path, edit.name, editHandler, event) 
+                        : event => editHandler(event)
                     }
                     disabled = {!edit.name}
                 />
@@ -62,12 +62,11 @@ export default function CategoryItem ({name, path}){
                     type = {edit.isEdit ? 'cancel' : 'delete'}
                     onClick = {
                         edit.isEdit 
-                        ? editHandler 
+                        ? event => editHandler(event)
                         : ()=>removeCategory(path)
                     }
                 />
             </div>
-            
         </div>
     )
 }

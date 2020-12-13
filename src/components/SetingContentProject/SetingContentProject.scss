@@ -5,8 +5,11 @@
     padding: 20px;
     border-radius: 25px;
     background: white;
+    position: relative;
+   
     .SetingContentProject__CategoryListSeting {
         @include blockCenter($height: 100%, $width: 50%);
+        margin: 20px;
     }
 
 }

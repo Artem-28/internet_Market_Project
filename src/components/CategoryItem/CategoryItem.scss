@@ -21,7 +21,6 @@
     }
 
     .CategoryItem__name > span {
-        /* border: 1px solid black; */
         height: 25px;
     }
     .CategoryItem__button {
@@ -41,4 +40,23 @@
             transition: all 0.3s;
         }
     }
+}
+
+.enter { 
+    opacity: 0; 
+    transform: translateY(100px); 
+}
+.enter-active { 
+    opacity: 1; 
+    transform: translateY(50px); 
+    transition: all 1s; 
+}
+.enter-done {
+    transform: translateY(50px); 
+    transition: all 1s
+}
+.exit-active { 
+    opacity: 0; 
+    transform: translateY(100px);
+    transition: all 1s;
 }

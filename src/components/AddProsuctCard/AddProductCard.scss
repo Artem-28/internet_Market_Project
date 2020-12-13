@@ -1,0 +1,66 @@
+@import '../../scss/mixins.scss';
+@import '../../scss/variables.scss';
+.AddProductCard {
+    @include blockCenter($alignHorizontal: center, $alignVertical: center, $height: 450px, $width: 700px);
+    position: relative;
+    padding: 15px;
+    padding-top: 30px;
+    
+    border-radius: 25px;
+    background: white;
+    .AddProductCard__label {
+        position: absolute;
+        background: white;
+        font-size: 22px;
+        font-weight: bold;
+        color: $blueColor;
+        top: 12px;
+    }
+    .AddProductCard__inside {
+        @include blockCenter($alignHorizontal: space-between, $alignVertical: center, $height: 100%, $width: 100%);
+        flex-direction: column;
+        border: 2px solid $blueColor;
+        border-radius: 25px;
+    }
+    .AddProductCard__inside__context {
+        @include blockCenter($height: 60%, $width: 93%);
+        flex-direction: column;
+        position: relative;
+        margin-top: 70px;
+        border-radius: 25px;
+        border: 2px solid $purpleColor;
+    }
+    .AddProductCard__inside__context__label {
+        position: absolute;
+        font-size: 20px;
+        font-weight: bold;
+        background: white;
+        color: $purpleColor;
+        top: -15px;
+    }
+
+    .AddProductCard__inside__context__pathInfo {
+        @include blockCenter($alignHorizontal: flex-start, $alignVertical: center, $height: auto, $width: 100%);
+        font-size: 16px;
+        color:  rgba(0, 0, 0, 0.6);
+        & > p {margin-left: 20px;}
+        & > p > span {font-weight: bold;}
+    }
+
+
+    .AddProductCard__inside__steps {
+        padding-top: 50px;
+        width: 95%;
+    }
+    .AddProductCard__inside__buttons {
+        @include blockCenter($alignHorizontal: space-between, $alignVertical: center, $height: auto, $width: 100%);
+        
+       
+    }
+
+    .AddProductCard__inside__buttons__conteiner {
+        @include blockCenter($alignHorizontal: space-between, $alignVertical: center, $height: auto, $width: 270px);
+        margin: 20px;
+    }
+
+}

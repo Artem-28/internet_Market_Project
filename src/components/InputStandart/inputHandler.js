@@ -8,3 +8,7 @@ export function blurHandler(event){
         label.classList.remove('InputStandart__inside__label--focus')
     }
 }
+
+export function isInvalid({valid, touched, shouldValidate}){
+    return !valid && shouldValidate && touched
+}

@@ -24,6 +24,7 @@
     .CategoryListSeting__addCategory__conteiner {
         @include blockCenter($height: 50px, $width: 100%);
         margin-top: 30px;
+        justify-content: space-between;
     }
     .CategoryListSeting__addCategory__conteiner__button {
         margin-left: 20px;
@@ -37,4 +38,14 @@
         margin-top: 20px;
         overflow: auto;
     }
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, $purpleColor 0%, $blueColor 100%);
+    border-radius: 25px;
+}
+
+::-webkit-scrollbar {
+    background: none;
+    width: 10px;
 }

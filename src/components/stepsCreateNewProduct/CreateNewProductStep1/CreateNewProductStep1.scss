@@ -1,0 +1,11 @@
+@import '../../../scss/mixins.scss';
+.CreateNewProductStep1 {
+    @include blockCenter();
+    .CreateNewProductStep1__conteiner {
+        @include blockCenter($alignHorizontal: space-between, $alignVertical: flex-start, $height: 140px, $width: 70%);
+        flex-direction: column;
+    }
+    .CreateNewProductStep1__conteiner__wrapper {
+        @include blockCenter($alignHorizontal: space-between, $height: auto,);
+    }
+}

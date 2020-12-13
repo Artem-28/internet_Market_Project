@@ -24,14 +24,14 @@ export function addNewCategory(path, name, clearInput){
     })
 }
 
-export function uppdateCategory(path, newName, editHandler){
+export function uppdateCategory(path, newName, editHandler, event){
+    event.stopPropagation()
     firebase.database().ref('products/category/' + path).update({
         title: newName
     }).then(()=> {
-        editHandler()
+        editHandler(event)
         }
     )
-    console.log('uppdate')
 }
 
 export function removeCategory(path){

@@ -1,13 +1,13 @@
-
-import React from 'react'
+import React, {useContext} from 'react'
 import ProductItem from '../ProductItem/ProductItem'
 import AddCategoryInput from '../AddCategoryInput/AddCategoryInput'
 import Button from '../buttons/Button/Button'
 import CategoryItem from '../CategoryItem/CategoryItem'
 import './ProjectFileStructure.scss'
+import {ContextSetingContentProject} from '../../context/context'
 
 export default function ProjectFileStructure ({list}){
-
+    const {startAddNewProduct} = useContext(ContextSetingContentProject)
 
     return (
         <div className = 'ProjectFileStructure'>
@@ -15,7 +15,11 @@ export default function ProjectFileStructure ({list}){
             ?Object.keys(list).map(categoryKey => {
                 return (
                     <React.Fragment key = {categoryKey}>
-                        <CategoryItem name = {list[categoryKey].title} path = {categoryKey} />
+                        <CategoryItem 
+                            name = {list[categoryKey].title} 
+                            path = {categoryKey} 
+                            id = {categoryKey}
+                        />
                         <div className = 'ProjectFileStructure__subcategory'>
                             <AddCategoryInput path = {categoryKey} />
                             {Object.keys(list[categoryKey]).map(subcategoryKey => {
@@ -26,6 +30,7 @@ export default function ProjectFileStructure ({list}){
                                             <CategoryItem 
                                                 name = {subcategoryList.title}
                                                 path = {`${categoryKey}/${subcategoryKey}`}
+                                                id = {subcategoryKey}
                                             />
                                             <div className = 'ProjectFileStructure__subcategory'>
                                                 <AddCategoryInput path = {`${categoryKey}/${subcategoryKey}`} />
@@ -37,6 +42,7 @@ export default function ProjectFileStructure ({list}){
                                                                 <CategoryItem
                                                                     name = {subSubCategoryList.title}
                                                                     path = {`${categoryKey}/${subcategoryKey}/${subSubCategoryKey}`}
+                                                                    id = {subSubCategoryKey}
                                                                 />
                                                                 <div className = 'ProjectFileStructure__subcategory'>
                                                                     <div className = 'ProjectFileStructure__subcategory__button'>
@@ -44,6 +50,10 @@ export default function ProjectFileStructure ({list}){
                                                                             width = {110}
                                                                             height = {20}
                                                                             fontSize ={10}
+                                                                            onClick = {()=>startAddNewProduct(
+                                                                                `${categoryKey}/${subcategoryKey}/${subSubCategoryKey}`,
+                                                                                `${list[categoryKey].title}/${subcategoryList.title}/${subSubCategoryList.title}/`
+                                                                                )}
                                                                         >добавить товар</Button>
                                                                     </div>
                                                                     {Object.keys(subSubCategoryList).map(productKey => {

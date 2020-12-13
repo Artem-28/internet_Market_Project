@@ -1,4 +1,7 @@
 @import '../../scss/mixins.scss';
+
+
+@include animationHidenTranslateY(1s, 0.5s, -100px, 20px, 0px);
 .ProjectFileStructure {
     @include blockCenter($height: auto, $width: 95%);
     top: 10px;
